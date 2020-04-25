@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
@@ -23,6 +24,17 @@ public class BlackJack extends Application {
 
     @Override
     public void start(Stage peaLava) throws Exception {
+
+        // Label styles
+        String labelStyle1 ="-fx-font-weight: bold;"+
+                "-fx-background-color: #FCBCAF;"+
+                "-fx-font-size: 13px";
+                /*"-fx-font-weight: bold;"+
+                "-fx-font-size: 16px;"+
+                "-fx-background-color: #FCBCAF;"+
+                "-fx-border-color: black";*/
+
+
         FlowPane juur = new FlowPane(); // luuakse juur
         juur.setOrientation(Orientation.VERTICAL);
         juur.setAlignment(Pos.TOP_CENTER);
@@ -40,15 +52,11 @@ public class BlackJack extends Application {
         // Esimene rida
         HBox rida1 = new HBox();
         rida1.setSpacing(10);
-
-        Label kasutajanimiSilt = new Label("Kasutaja nimi:");
-        kasutajanimiSilt.setStyle("-fx-font-weight: bold");
-
+        Label kasutajanimiSilt = new Label(" Kasutaja nimi: ");
+        kasutajanimiSilt.setStyle(labelStyle1);
         TextField kasutajanimiSisestus = new TextField();
-
         Button leiaKasutaja = new Button("Leia/loo kasutaja");
         Button reeglid = new Button("Reeglid");
-
         rida1.getChildren().addAll(kasutajanimiSilt, kasutajanimiSisestus, leiaKasutaja, reeglid);
         juur.getChildren().add(rida1);
 
@@ -66,8 +74,8 @@ public class BlackJack extends Application {
         VBox.setMargin(rida2, new Insets(50, 0, 50, 50));
         Label kasutajanimi = new Label("Kasutaja nimi: ");
         Label summa = new Label("Raha: ");
-        kasutajanimi.setStyle("-fx-font-weight: bold");
-        summa.setStyle("-fx-font-weight: bold");
+        kasutajanimi.setStyle(labelStyle1);
+        summa.setStyle(labelStyle1);
         rida2.getChildren().addAll(kasutajanimi,summa);
         juur.getChildren().add(rida2);
         //kasutajanimiSisestus.clear();
@@ -80,7 +88,7 @@ public class BlackJack extends Application {
         rida3.setSpacing(10);
         rida3.setVisible(false); // Peidab alguses
         Label panus = new Label("Panus:");
-        panus.setStyle("-fx-font-weight: bold");
+        panus.setStyle(labelStyle1);
 
         TextField panuseSisestus = new TextField();
 
