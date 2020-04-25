@@ -29,12 +29,11 @@ public class BlackJack extends Application {
         String labelStyle1 ="-fx-font-weight: bold;"+
                 "-fx-background-color: #FCBCAF;"+
                 "-fx-font-size: 13px";
-                /*"-fx-font-weight: bold;"+
-                "-fx-font-size: 16px;"+
-                "-fx-background-color: #FCBCAF;"+
-                "-fx-border-color: black";*/
 
-        FlowPane juur = new FlowPane(); // luuakse juur
+        final Mängur[] mängur = new Mängur[1];
+
+        // Juur
+        FlowPane juur = new FlowPane();
         juur.setOrientation(Orientation.VERTICAL);
         juur.setAlignment(Pos.TOP_CENTER);
         juur.setVgap(20);
@@ -159,6 +158,7 @@ public class BlackJack extends Application {
                     // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS LOEB FAILIST KASUTAJA ANDMED (SUMMA) VÕI KUI KASUTAJAT
                     // EI OLE SIIS TEKITAB UUE.
 
+                    mängur[0] = new Mängur(20,kasutajanimiSilt.getText());
                     kasutajanimi.setText(" " + kasutajanimiSisestus.getText() + " ");
                     kasutajanimiSisestus.clear();
                     summa.setText(" 20 ");
@@ -202,24 +202,24 @@ public class BlackJack extends Application {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(panuseSisestus.getText().isEmpty()){
-                    FlowPane seletus = new FlowPane();
-                    seletus.setAlignment(Pos.CENTER);
-                    seletus.setOrientation(Orientation.VERTICAL);
-                    Label seletus1 = new Label("Pead sisestama panuse!");
-                    Button tagasi = new Button("Tagasi");
-                    seletus.getChildren().addAll(seletus1,tagasi);
-                    Scene error = new Scene(seletus,200,100,Color.SNOW);
-                    peaLava.setScene(error);
-                    peaLava.show();
-
-                    tagasi.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            peaLava.setScene(stseen1);
-                            peaLava.show();
-                        }
-                    });
-
+                    String hoiatusTekst = "Pead sisestama panuse!";
+                    hoiatuseAken(hoiatusTekst,peaLava,stseen1);
+                }
+                
+                else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
+                    String hoiatusTekst = "Sisestud panus ei olnud number. \nSisest uus number!";
+                    panuseSisestus.clear();
+                    hoiatuseAken(hoiatusTekst,peaLava,stseen1);
+                }
+                else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
+                    String hoiatusTekst = "Eelnev panus oli \nsuurem kui sul on raha. \nVali uus panus!";
+                    panuseSisestus.clear();
+                    hoiatuseAken(hoiatusTekst,peaLava,stseen1);
+                }
+                else if(Double.parseDouble(panuseSisestus.getText()) < 0.0) {
+                    String hoiatusTekst = "Panus ei saa olla \nväiksem kui null. \nVali uus panus!";
+                    panuseSisestus.clear();
+                    hoiatuseAken(hoiatusTekst, peaLava, stseen1);
                 }
                 else if(!panuseSisestus.getText().isEmpty()){
 
@@ -239,6 +239,27 @@ public class BlackJack extends Application {
         });
 
 
+    }
+
+    public void hoiatuseAken(String hoiatusTekst, Stage peaLava, Scene stseen1) {
+        FlowPane seletus = new FlowPane();
+        seletus.setAlignment(Pos.CENTER);
+        seletus.setOrientation(Orientation.VERTICAL);
+        Label seletus1 = new Label();
+        seletus1.setText(hoiatusTekst);
+        Button tagasi = new Button("Tagasi");
+        seletus.getChildren().addAll(seletus1, tagasi);
+        Scene error = new Scene(seletus, 200, 100, Color.SNOW);
+        peaLava.setScene(error);
+        peaLava.show();
+
+        tagasi.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                peaLava.setScene(stseen1);
+                peaLava.show();
+            }
+        });
     }
 
     public static void main(String[] args) {
