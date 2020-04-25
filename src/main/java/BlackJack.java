@@ -173,41 +173,43 @@ public class BlackJack extends Application {
         uusM2ng.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(panuseSisestus.getText().isEmpty()){
-                    String tekst = "Pead sisestama panuse!";
-                    lisaAken(tekst,peaLava,stseen1,200,100);
+                try {
+                    if(panuseSisestus.getText().isEmpty()){
+                        String tekst = "Pead sisestama panuse!";
+                        lisaAken(tekst,peaLava,stseen1,200,100);
+                    }
+                    else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
+                        String tekst = "Eelnev panus oli \nsuurem kui sul on raha. \nVali uus panus!";
+                        panuseSisestus.clear();
+                        lisaAken(tekst,peaLava,stseen1,200,100);
+                    }
+                    else if(Double.parseDouble(panuseSisestus.getText()) < 0.0) {
+                        String tekst = "Panus ei saa olla \nväiksem kui null. \nVali uus panus!";
+                        panuseSisestus.clear();
+                        lisaAken(tekst,peaLava,stseen1,200,100);
+                    }
+                    else if(!panuseSisestus.getText().isEmpty()){
+
+                        // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS ALUSTAB MÄNGU
+
+                        panuseSisestus.setDisable(true);
+                        panuseSisestus.setStyle("-fx-opacity: 1;");
+                        //peida nupp ise
+                        Button source = (Button) mouseEvent.getSource();
+                        source.setVisible(false);
+
+                        // Näita sektsioone
+                        m2nguplokk.setVisible(true);
+
+                    }
+
                 }
-                
-                else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
-                    String tekst = "Sisestud panus ei olnud number. \nSisest uus number!";
+                catch (NumberFormatException e) {
+                    String tekst = "Sisestud panus ei olnud number. \nSisesta panus numbrina!";
                     panuseSisestus.clear();
                     lisaAken(tekst,peaLava,stseen1,200,100);
                 }
-                else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
-                    String tekst = "Eelnev panus oli \nsuurem kui sul on raha. \nVali uus panus!";
-                    panuseSisestus.clear();
-                    lisaAken(tekst,peaLava,stseen1,200,100);
-                }
-                else if(Double.parseDouble(panuseSisestus.getText()) < 0.0) {
-                    String tekst = "Panus ei saa olla \nväiksem kui null. \nVali uus panus!";
-                    panuseSisestus.clear();
-                    lisaAken(tekst,peaLava,stseen1,200,100);
-                }
-                else if(!panuseSisestus.getText().isEmpty()){
-
-                    // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS ALUSTAB MÄNGU
-
-                    panuseSisestus.setDisable(true);
-                    panuseSisestus.setStyle("-fx-opacity: 1;");
-                    //peida nupp ise
-                    Button source = (Button) mouseEvent.getSource();
-                    source.setVisible(false);
-
-                    // Näita sektsioone
-                    m2nguplokk.setVisible(true);
-
-                }
-            }
+             }
         });
 
 
@@ -217,10 +219,13 @@ public class BlackJack extends Application {
         FlowPane seletus = new FlowPane();
         seletus.setAlignment(Pos.CENTER);
         seletus.setOrientation(Orientation.VERTICAL);
+
         Label seletus1 = new Label();
         seletus1.setText(tekst);
+
         Button tagasi = new Button("Tagasi");
         seletus.getChildren().addAll(seletus1, tagasi);
+
         Scene error = new Scene(seletus, laius, kõrgus, Color.SNOW);
         peaLava.setScene(error);
         peaLava.show();
