@@ -68,16 +68,29 @@ public class BlackJack extends Application {
 
 
         // Teine rida
-        VBox rida2 = new VBox();
-        rida2.setSpacing(10);
-        rida2.setVisible(false); // Peidab alguses
-        VBox.setMargin(rida2, new Insets(50, 0, 50, 50));
-        Label kasutajanimi = new Label("Kasutaja nimi: ");
-        Label summa = new Label("Raha: ");
-        kasutajanimi.setStyle(labelStyle1);
-        summa.setStyle(labelStyle1);
-        rida2.getChildren().addAll(kasutajanimi,summa);
-        juur.getChildren().add(rida2);
+        VBox plokk2 = new VBox();
+        plokk2.setSpacing(10);
+        plokk2.setVisible(false); // Peidab alguses
+        VBox.setMargin(plokk2, new Insets(50, 0, 50, 50));
+
+        HBox plokk2rida1 = new HBox();
+        plokk2rida1.setSpacing(10);
+        Label kasutajanimiTekst = new Label(" Kasutaja nimi: ");
+        Label kasutajanimi = new Label();
+        kasutajanimiTekst.setStyle(labelStyle1);
+        //kasutajanimi.setStyle(labelStyle1);
+        plokk2rida1.getChildren().addAll(kasutajanimiTekst,kasutajanimi);
+
+        HBox plokk2rida2 = new HBox();
+        plokk2rida2.setSpacing(10);
+        Label summaTekst = new Label(" Raha: ");
+        Label summa = new Label();
+        summaTekst.setStyle(labelStyle1);
+        //summa.setStyle(labelStyle1);
+        plokk2rida2.getChildren().addAll(summaTekst,summa);
+
+        plokk2.getChildren().addAll(plokk2rida1,plokk2rida2);
+        juur.getChildren().add(plokk2);
         //kasutajanimiSisestus.clear();
         //leiaKasutaja.setOnMouseClicked(e -> leiaKasutaja.setDisable(false));
 
@@ -87,7 +100,7 @@ public class BlackJack extends Application {
         HBox rida3 = new HBox();
         rida3.setSpacing(10);
         rida3.setVisible(false); // Peidab alguses
-        Label panus = new Label("Panus:");
+        Label panus = new Label(" Panus: ");
         panus.setStyle(labelStyle1);
 
         TextField panuseSisestus = new TextField();
@@ -104,9 +117,11 @@ public class BlackJack extends Application {
         m2nguplokk.setVgap(20);
         m2nguplokk.setVisible(false);
 
-        Label diiler = new Label("Diiler:");
+        Label diiler = new Label(" Diiler: ");
+        diiler.setStyle(labelStyle1);
         HBox diileriKaardid = new HBox();
-        Label mangija = new Label("Mängija:");
+        Label mangija = new Label(" Mängija: ");
+        mangija.setStyle(labelStyle1);
         HBox mangijaKaardid = new HBox();
         HBox nupud = new HBox();
         nupud.setVisible(false);
@@ -144,15 +159,15 @@ public class BlackJack extends Application {
                     // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS LOEB FAILIST KASUTAJA ANDMED (SUMMA) VÕI KUI KASUTAJAT
                     // EI OLE SIIS TEKITAB UUE.
 
-                    kasutajanimi.setText("Kasutaja nimi: " + kasutajanimiSisestus.getText());
+                    kasutajanimi.setText(" " + kasutajanimiSisestus.getText() + " ");
                     kasutajanimiSisestus.clear();
-                    summa.setText("Raha: 20");
+                    summa.setText(" 20 ");
 
                     //leiaKasutaja.setDisable(true);
                     leiaKasutaja.setOnMouseClicked(e -> leiaKasutaja.setDisable(false));
 
                     // Näita sektsioone
-                    rida2.setVisible(true);
+                    plokk2.setVisible(true);
                     rida3.setVisible(true);
                 }
             }
