@@ -143,7 +143,6 @@ public class BlackJack extends Application {
                     lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 else if(!kasutajanimiSisestus.getText().isEmpty()){
-
                     // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS LOEB FAILIST KASUTAJA ANDMED (SUMMA) VÕI KUI KASUTAJAT
                     // EI OLE SIIS TEKITAB UUE.
 
