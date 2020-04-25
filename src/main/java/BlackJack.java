@@ -34,7 +34,6 @@ public class BlackJack extends Application {
                 "-fx-background-color: #FCBCAF;"+
                 "-fx-border-color: black";*/
 
-
         FlowPane juur = new FlowPane(); // luuakse juur
         juur.setOrientation(Orientation.VERTICAL);
         juur.setAlignment(Pos.TOP_CENTER);
