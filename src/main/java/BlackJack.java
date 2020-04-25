@@ -138,10 +138,11 @@ public class BlackJack extends Application {
             public void handle(MouseEvent mouseEvent) {
                 if(kasutajanimiSisestus.getText().isEmpty()){
                     FlowPane seletus = new FlowPane();
-                    Label seletus1 = new Label("Pead sisestama kasutajanimi!");
+                    seletus.setAlignment(Pos.CENTER);
+                    Label seletus1 = new Label("Pead sisestama kasutajanime!");
                     Button tagasi = new Button("Tagasi");
                     seletus.getChildren().addAll(seletus1,tagasi);
-                    Scene error = new Scene(seletus,200,200,Color.SNOW);
+                    Scene error = new Scene(seletus,200,100,Color.SNOW);
                     peaLava.setScene(error);
                     peaLava.show();
 
@@ -177,6 +178,7 @@ public class BlackJack extends Application {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 FlowPane reeglid = new FlowPane();
+                reeglid.setAlignment(Pos.CENTER);
                 Label r = new Label( "EESMÄRK: Saada diileriga võrdne\nvõi rohkem arv punkte.\n" +
                         "Kaartide väärtused:\n" +
                         "\tÄ - 1 või 11\n" +
@@ -202,10 +204,12 @@ public class BlackJack extends Application {
             public void handle(MouseEvent mouseEvent) {
                 if(panuseSisestus.getText().isEmpty()){
                     FlowPane seletus = new FlowPane();
+                    seletus.setAlignment(Pos.CENTER);
+                    seletus.setOrientation(Orientation.VERTICAL);
                     Label seletus1 = new Label("Pead sisestama panuse!");
                     Button tagasi = new Button("Tagasi");
                     seletus.getChildren().addAll(seletus1,tagasi);
-                    Scene error = new Scene(seletus,200,200,Color.SNOW);
+                    Scene error = new Scene(seletus,200,100,Color.SNOW);
                     peaLava.setScene(error);
                     peaLava.show();
 
