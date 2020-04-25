@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -31,6 +32,8 @@ public class BlackJack extends Application {
                 "-fx-font-size: 13px";
 
         final Mängur[] mängur = new Mängur[1];
+        //mängur[0] = new Mängur(0,"");
+        final Mäng[] mäng = new Mäng[1];
 
         // Juur
         FlowPane juur = new FlowPane();
@@ -83,6 +86,7 @@ public class BlackJack extends Application {
         plokk2rida2.setSpacing(10);
         Label summaTekst = new Label(" Raha: ");
         Label summa = new Label();
+        //summa.textProperty().bind(new SimpleDoubleProperty(mängur[0].getRahakott()).asString());
         summaTekst.setStyle(labelStyle1);
         //summa.setStyle(labelStyle1);
         plokk2rida2.getChildren().addAll(summaTekst,summa);
@@ -144,9 +148,11 @@ public class BlackJack extends Application {
                     // EI OLE SIIS TEKITAB UUE.
 
                     mängur[0] = new Mängur(20,kasutajanimiSilt.getText());
+                    //mängur[0].setRahakott(20);
                     kasutajanimi.setText(" " + kasutajanimiSisestus.getText() + " ");
                     kasutajanimiSisestus.clear();
-                    summa.setText(" 20 ");
+                    //summa.textProperty().bind(new SimpleDoubleProperty(mängur[0].getRahakott()).asString());
+                    summa.setText(Double.toString(mängur[0].getRahakott()));
 
                     //leiaKasutaja.setDisable(true);
                     leiaKasutaja.setOnMouseClicked(e -> leiaKasutaja.setDisable(false));
@@ -191,7 +197,8 @@ public class BlackJack extends Application {
                     else if(!panuseSisestus.getText().isEmpty()){
 
                         // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS ALUSTAB MÄNGU
-
+                        mäng[0] = new Mäng();
+                        mäng[0].jooksuta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa);
                         panuseSisestus.setDisable(true);
                         panuseSisestus.setStyle("-fx-opacity: 1;");
                         //peida nupp ise
@@ -204,7 +211,7 @@ public class BlackJack extends Application {
                     }
 
                 }
-                catch (NumberFormatException e) {
+                catch (NumberFormatException | InterruptedException e) {
                     String tekst = "Sisestud panus ei olnud number. \nSisesta panus numbrina!";
                     panuseSisestus.clear();
                     lisaAken(tekst,peaLava,stseen1,200,100);
