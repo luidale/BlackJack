@@ -135,23 +135,8 @@ public class BlackJack extends Application {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(kasutajanimiSisestus.getText().isEmpty()){
-                    FlowPane seletus = new FlowPane();
-                    seletus.setAlignment(Pos.CENTER);
-                    Label seletus1 = new Label("Pead sisestama kasutajanime!");
-                    Button tagasi = new Button("Tagasi");
-                    seletus.getChildren().addAll(seletus1,tagasi);
-                    Scene error = new Scene(seletus,200,100,Color.SNOW);
-                    peaLava.setScene(error);
-                    peaLava.show();
-
-                    tagasi.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            peaLava.setScene(stseen1);
-                            peaLava.show();
-                        }
-                    });
-
+                    String tekst = "Pead sisestama kasutajanime!";
+                    lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 else if(!kasutajanimiSisestus.getText().isEmpty()){
 
@@ -176,25 +161,12 @@ public class BlackJack extends Application {
         reeglid.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                FlowPane reeglid = new FlowPane();
-                reeglid.setAlignment(Pos.CENTER);
-                Label r = new Label( "EESMÄRK: Saada diileriga võrdne\nvõi rohkem arv punkte.\n" +
+                String tekst = "EESMÄRK: Saada diileriga võrdne\nvõi rohkem arv punkte.\n" +
                         "Kaartide väärtused:\n" +
                         "\tÄ - 1 või 11\n" +
                         "\tPildid - 10\n" +
-                        "\tNumbeid - number\n");
-                Button tagasi = new Button("Tagasi");
-                reeglid.getChildren().addAll(r,tagasi);
-                peaLava.setScene(new Scene(reeglid,200,200,Color.SNOW));
-                peaLava.show();
-
-                tagasi.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        peaLava.setScene(stseen1);
-                        peaLava.show();
-                    }
-                });
+                        "\tNumbeid - number\n";
+                lisaAken(tekst,peaLava,stseen1,200,200);
             }
         });
 
@@ -202,24 +174,24 @@ public class BlackJack extends Application {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(panuseSisestus.getText().isEmpty()){
-                    String hoiatusTekst = "Pead sisestama panuse!";
-                    hoiatuseAken(hoiatusTekst,peaLava,stseen1);
+                    String tekst = "Pead sisestama panuse!";
+                    lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 
                 else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
-                    String hoiatusTekst = "Sisestud panus ei olnud number. \nSisest uus number!";
+                    String tekst = "Sisestud panus ei olnud number. \nSisest uus number!";
                     panuseSisestus.clear();
-                    hoiatuseAken(hoiatusTekst,peaLava,stseen1);
+                    lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 else if(Double.parseDouble(panuseSisestus.getText()) > mängur[0].getRahakott()){
-                    String hoiatusTekst = "Eelnev panus oli \nsuurem kui sul on raha. \nVali uus panus!";
+                    String tekst = "Eelnev panus oli \nsuurem kui sul on raha. \nVali uus panus!";
                     panuseSisestus.clear();
-                    hoiatuseAken(hoiatusTekst,peaLava,stseen1);
+                    lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 else if(Double.parseDouble(panuseSisestus.getText()) < 0.0) {
-                    String hoiatusTekst = "Panus ei saa olla \nväiksem kui null. \nVali uus panus!";
+                    String tekst = "Panus ei saa olla \nväiksem kui null. \nVali uus panus!";
                     panuseSisestus.clear();
-                    hoiatuseAken(hoiatusTekst, peaLava, stseen1);
+                    lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 else if(!panuseSisestus.getText().isEmpty()){
 
@@ -241,15 +213,15 @@ public class BlackJack extends Application {
 
     }
 
-    public void hoiatuseAken(String hoiatusTekst, Stage peaLava, Scene stseen1) {
+    public void lisaAken(String tekst, Stage peaLava, Scene stseen1, int laius, int kõrgus) {
         FlowPane seletus = new FlowPane();
         seletus.setAlignment(Pos.CENTER);
         seletus.setOrientation(Orientation.VERTICAL);
         Label seletus1 = new Label();
-        seletus1.setText(hoiatusTekst);
+        seletus1.setText(tekst);
         Button tagasi = new Button("Tagasi");
         seletus.getChildren().addAll(seletus1, tagasi);
-        Scene error = new Scene(seletus, 200, 100, Color.SNOW);
+        Scene error = new Scene(seletus, laius, kõrgus, Color.SNOW);
         peaLava.setScene(error);
         peaLava.show();
 
