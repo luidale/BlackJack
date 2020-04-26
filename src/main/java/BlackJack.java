@@ -97,6 +97,8 @@ public class BlackJack extends Application {
         //leiaKasutaja.setOnMouseClicked(e -> leiaKasutaja.setDisable(false));
 
 
+
+
         // Kolmas rida
 
         HBox rida3 = new HBox();
@@ -135,7 +137,7 @@ public class BlackJack extends Application {
         m2nguplokk.getChildren().addAll(diiler, diileriKaardid, mangija,mangijaKaardid,nupud);
         juur.getChildren().add(m2nguplokk);
 
-        leiaKasutaja.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        leiaKasutaja.setOnMouseClicked(new EventHandler<MouseEvent>()  {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(kasutajanimiSisestus.getText().isEmpty()){
@@ -143,6 +145,8 @@ public class BlackJack extends Application {
                     lisaAken(tekst,peaLava,stseen1,200,100);
                 }
                 else if(!kasutajanimiSisestus.getText().isEmpty()){
+
+
                     // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS LOEB FAILIST KASUTAJA ANDMED (SUMMA) VÕI KUI KASUTAJAT
                     // EI OLE SIIS TEKITAB UUE.
 
@@ -152,6 +156,7 @@ public class BlackJack extends Application {
                     kasutajanimiSisestus.clear();
                     //summa.textProperty().bind(new SimpleDoubleProperty(mängur[0].getRahakott()).asString());
                     summa.setText(Double.toString(mängur[0].getRahakott()));
+
 
                     //leiaKasutaja.setDisable(true);
                     leiaKasutaja.setOnMouseClicked(e -> leiaKasutaja.setDisable(false));
