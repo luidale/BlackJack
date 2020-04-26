@@ -115,6 +115,12 @@ public class BlackJack extends Application {
 
         // Neljas plokk
 
+        HBox rida4 = new HBox();
+        rida3.setSpacing(10);
+        juur.getChildren().add(rida4);
+
+        // viies plokk
+
         FlowPane m2nguplokk = new FlowPane();
         m2nguplokk.setOrientation(Orientation.VERTICAL);
         m2nguplokk.setAlignment(Pos.TOP_LEFT);
@@ -139,7 +145,16 @@ public class BlackJack extends Application {
         nupud.getChildren().addAll(v6ta, eiV6ta);
 
         m2nguplokk.getChildren().addAll(diiler, diileriKaardid, mangija,mangijaKaardid,nupud);
-        juur.getChildren().add(m2nguplokk);
+        rida4.getChildren().add(m2nguplokk);
+
+        // Kuues plokk
+
+        Label info = new Label();
+        info.setStyle("-fx-font-weight: bold;"+
+                "-fx-background-color: #FABCAF;"+
+                "-fx-font-size: 13px");
+        info.setVisible(false);
+        rida4.getChildren().add(info);
 
         leiaKasutaja.setOnMouseClicked(new EventHandler<MouseEvent>()  {
             @Override
@@ -204,14 +219,18 @@ public class BlackJack extends Application {
                         panuseSisestus.clear();
                         lisaAken(tekst,peaLava,stseen1,200,100);
                     }
-                    else if(Double.parseDouble(panuseSisestus.getText()) < 0.0) {
-                        String tekst = "Panus ei saa olla \nväiksem kui null. \nVali uus panus!";
+                    else if(Double.parseDouble(panuseSisestus.getText()) <= 0.0) {
+                        String tekst = "Panus peab olema \nsuurem kui null. \nVali uus panus!";
                         panuseSisestus.clear();
                         lisaAken(tekst,peaLava,stseen1,200,100);
                     }
                     else if(!panuseSisestus.getText().isEmpty()){
                         // Näita sektsioone
                         m2nguplokk.setVisible(true);
+                        info.setVisible(false);
+                        info.setText("");
+                        diileriKaardid.getChildren().clear();
+                        mangijaKaardid.getChildren().clear();
                         //peida nupp ise
                         Button source = (Button) mouseEvent.getSource();
                         source.setVisible(false);
@@ -219,12 +238,9 @@ public class BlackJack extends Application {
                         mäng[0] = new Mäng(diileriKaardid, mangijaKaardid);
 
                         System.out.println("AAA");
-                        mäng[0].jooksuta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud);
+                        mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus);
                         panuseSisestus.setDisable(true);
                         panuseSisestus.setStyle("-fx-opacity: 1;");
-
-
-
 
                     }
 

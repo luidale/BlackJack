@@ -9,6 +9,10 @@ public class Käsi {
     private ArrayList<Kaart> kaardid;
     private HBox kaardiLaud;
 
+    public HBox getKaardiLaud() {
+        return kaardiLaud;
+    }
+
     private String style ="-fx-font-weight: bold;"+
             "-fx-background-color: #706FF1;"+
             "-fx-font-size: 13px";
@@ -30,6 +34,7 @@ public class Käsi {
 
         Label kaardiKuva = new Label(" " + uuskaart + " ");
         kaardiKuva.setStyle(style);
+
 
         kaardiLaud.getChildren().add(kaardiKuva);
     }
