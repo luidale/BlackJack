@@ -72,7 +72,7 @@ public class BlackJack extends Application {
         VBox plokk2 = new VBox();
         plokk2.setSpacing(10);
         plokk2.setVisible(false); // Peidab alguses
-        VBox.setMargin(plokk2, new Insets(50, 0, 50, 50));
+        //VBox.setMargin(plokk2, new Insets(150, 0, 100, 50));
 
         HBox plokk2rida1 = new HBox();
         plokk2rida1.setSpacing(10);
@@ -117,18 +117,22 @@ public class BlackJack extends Application {
 
         FlowPane m2nguplokk = new FlowPane();
         m2nguplokk.setOrientation(Orientation.VERTICAL);
-        m2nguplokk.setAlignment(Pos.TOP_CENTER);
+        m2nguplokk.setAlignment(Pos.TOP_LEFT);
         m2nguplokk.setVgap(20);
         m2nguplokk.setVisible(false);
 
         Label diiler = new Label(" Diiler: ");
         diiler.setStyle(labelStyle1);
         HBox diileriKaardid = new HBox();
+        diileriKaardid.setSpacing(10);
         Label mangija = new Label(" Mängija: ");
         mangija.setStyle(labelStyle1);
         HBox mangijaKaardid = new HBox();
+        mangijaKaardid.setSpacing(10);
+
         HBox nupud = new HBox();
         nupud.setVisible(false);
+        nupud.setSpacing(50);
 
         Button v6ta = new Button("Võta juurde");
         Button eiV6ta = new Button("Ei võta juurde");
@@ -147,10 +151,17 @@ public class BlackJack extends Application {
                 else if(!kasutajanimiSisestus.getText().isEmpty()){
 
 
-                    // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS LOEB FAILIST KASUTAJA ANDMED (SUMMA) VÕI KUI KASUTAJAT
-                    // EI OLE SIIS TEKITAB UUE.
+                    // Uue vi olemas oleva kasutaja andmete lugemine/tegemine
+                    FailiLugemine failiLugemine = new FailiLugemine();
+                    Double raha;
+                    try {
+                        raha = failiLugemine.loeFailist(kasutajanimiSisestus.getText());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        raha = 20.0;
+                    }
 
-                    mängur[0] = new Mängur(20,kasutajanimiSilt.getText());
+                    mängur[0] = new Mängur(raha,kasutajanimiSilt.getText());
                     //mängur[0].setRahakott(20);
                     kasutajanimi.setText(" " + kasutajanimiSisestus.getText() + " ");
                     kasutajanimiSisestus.clear();
@@ -199,18 +210,21 @@ public class BlackJack extends Application {
                         lisaAken(tekst,peaLava,stseen1,200,100);
                     }
                     else if(!panuseSisestus.getText().isEmpty()){
-
-                        // SIIN ON VAJA VÄLJA KUTSUDA KLASS MIS ALUSTAB MÄNGU
-                        mäng[0] = new Mäng();
-                        mäng[0].jooksuta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa);
-                        panuseSisestus.setDisable(true);
-                        panuseSisestus.setStyle("-fx-opacity: 1;");
+                        // Näita sektsioone
+                        m2nguplokk.setVisible(true);
                         //peida nupp ise
                         Button source = (Button) mouseEvent.getSource();
                         source.setVisible(false);
+                        // Alustab mängu
+                        mäng[0] = new Mäng(diileriKaardid, mangijaKaardid);
 
-                        // Näita sektsioone
-                        m2nguplokk.setVisible(true);
+                        System.out.println("AAA");
+                        mäng[0].jooksuta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud);
+                        panuseSisestus.setDisable(true);
+                        panuseSisestus.setStyle("-fx-opacity: 1;");
+
+
+
 
                     }
 
