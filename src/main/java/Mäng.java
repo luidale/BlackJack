@@ -25,13 +25,13 @@ public class Mäng {
 
     public void alusta(Mängur mangur, Double panus, Label summa, Button v6ta, Button eiV6ta, HBox nupud, Label info,Button uusM2ng,TextField panuseSisestus) throws InterruptedException {
         // Eemalda panus rahakotist
-        System.out.println("BBB");
+        //System.out.println("BBB");
         mangur.muudaRahakott(-panus);
         summa.setText(Double.toString(mangur.getRahakott()));
 
         kaardipakk.sega();
         kaartideJagamine(diiler, mangija, kaardipakk);
-        System.out.println("CCC");
+        //System.out.println("CCC");
         // Kontroll kas mängijal on bläckjack ja diileril ei saa olla BlackJack
         if (mangija.summa() == 21) {
             if (Arrays.asList("Ä", "K", "E", "S", "10").indexOf(diiler.getKaardid().get(1).getSuurus()) == -1) {
@@ -40,7 +40,7 @@ public class Mäng {
                 return;
             }
         }
-        System.out.println("DDDD");
+        //System.out.println("DDDD");
         nupud.setVisible(true);
 
         v6ta.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -75,15 +75,15 @@ public class Mäng {
         // 1 kaart
         mängija.lisaKaart(pakk,true);
         //kuvaLaud(diiler, mängija, "Kaartide jagamine");
-        TimeUnit.SECONDS.sleep(1);
+        //TimeUnit.SECONDS.sleep(1);
         // 2 kaarti
         mängija.lisaKaart(pakk,true);
         //kuvaLaud(diiler, mängija, "Kaartide jagamine");
-        TimeUnit.SECONDS.sleep(1);
+        //TimeUnit.SECONDS.sleep(1);
         // 3 kaarti
         diiler.lisaKaart(pakk,false);
         //kuvaLaud(diiler, mängija, "Kaartide jagamine");
-        TimeUnit.SECONDS.sleep(1);
+        //TimeUnit.SECONDS.sleep(1);
         // 4 kaarti
         diiler.lisaKaart(pakk,true);
     }
@@ -96,11 +96,11 @@ public class Mäng {
         esimeneKaart.setText(diiler.getKaardid().get(0).toString());
 
         //kuvaLaud(diiler, mängija,  "Diileri voor:");
-        TimeUnit.SECONDS.sleep(2);
+        //TimeUnit.SECONDS.sleep(2);
         while (diiler.summa() < 17){
             diiler.lisaKaart(pakk,true);
             //kuvaLaud(diiler, mängija,  "Diileri voor:");
-            TimeUnit.SECONDS.sleep(2);
+            //TimeUnit.SECONDS.sleep(2);
         }
 
         mänguLõpp(mängija, diiler, panus, mangur,info, uusM2ng, panuseSisestus, summa);

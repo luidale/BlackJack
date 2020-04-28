@@ -6,7 +6,7 @@ public class Pakk {
 
     public Pakk() {
         kaardid = new ArrayList<>();
-        String[] mastid = {"Ri", "Ru", "Po", "Är"};
+        String[] mastid = {" ♣", " ♦", " ♠", " ♥"};
         String[] suurused = {"2","3","4","5","6","7","8","9","10","S","E","K","Ä"};
         int[][] väärtused = {{2},{3},{4},{5},{6},{7},{8},{9},{10},{10},{10},{10},{1,11}};
 

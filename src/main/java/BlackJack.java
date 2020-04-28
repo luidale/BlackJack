@@ -124,7 +124,7 @@ public class BlackJack extends Application {
 
         FlowPane m2nguplokk = new FlowPane();
         m2nguplokk.setOrientation(Orientation.VERTICAL);
-        m2nguplokk.setAlignment(Pos.TOP_LEFT);
+        //m2nguplokk.setAlignment(Pos.TOP_LEFT);
         m2nguplokk.setVgap(20);
         m2nguplokk.setVisible(false);
 
@@ -242,7 +242,7 @@ public class BlackJack extends Application {
                         // Alustab mängu
                         mäng[0] = new Mäng(diileriKaardid, mangijaKaardid);
 
-                        System.out.println("AAA");
+                        //System.out.println("AAA");
                         mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus);
                         panuseSisestus.setDisable(true);
                         panuseSisestus.setStyle("-fx-opacity: 1;");
