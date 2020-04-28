@@ -115,13 +115,24 @@ public class Mäng {
         panuseSisestus.setDisable(false);
         panuseSisestus.setStyle("");
         panuseSisestus.clear();
+        FailiLugemine lugemine = new FailiLugemine();
         if ( mangija.summa() > 21){
             info.setText("Diiler võitis! \n\tMängija läks lõhki " + mangija.summa() + " punktiga!");
+            try {
+                lugemine.uuendaAndmeid(mangur.getRahakott(),mangur.getNimi());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if (diiler.summa() > 21) {
             info.setText("Mängija võitis! \n\tDiiler läks lõhki " + diiler.summa() + " punktiga!");
             voit(panus, mangur,  2, info,summa);
         } else if(diiler.summa() > mangija.summa()){
             info.setText("Diiler võitis! \n\tDiiler: " + diiler.summa() + "\n\tMängija: " + mangija.summa());
+            try {
+                lugemine.uuendaAndmeid(mangur.getRahakott(),mangur.getNimi());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if (diiler.summa() < mangija.summa()){
             info.setText("Mängija võitis! \n\tDiiler:" + diiler.summa() + "\n\tMängija: " + mangija.summa());
             voit(panus, mangur,  2, info,summa);
@@ -130,6 +141,15 @@ public class Mäng {
             info.setText(info.getText() + "\nSaid panuse tagasi.");
             mangur.muudaRahakott(panus);
             summa.setText(Double.toString(mangur.getRahakott()));
+        }
+        if(mangur.getRahakott() == 0){
+            info.setText("Raha sai otsa ja seega mäng läbi!");
+            uusM2ng.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    uusM2ng.setDisable(true);
+                }
+            });
         }
 
         // Kontroll, et kui raha otsas siis lõetab mängu ära.
@@ -141,6 +161,12 @@ public class Mäng {
         info.setText(info.getText() + "\nVõitsid: " + panus*(koefitsent-1));
         mangur.muudaRahakott(panus * koefitsent);
         summa.setText(Double.toString(mangur.getRahakott()));
+        FailiLugemine lugemine = new FailiLugemine();
+        try {
+            lugemine.uuendaAndmeid(mangur.getRahakott(),mangur.getNimi());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

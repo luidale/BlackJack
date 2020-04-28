@@ -110,7 +110,8 @@ public class BlackJack extends Application {
         TextField panuseSisestus = new TextField();
 
         Button uusM2ng = new Button("Alusta uut mängu");
-        rida3.getChildren().addAll(panus,panuseSisestus,uusM2ng);
+        Button lopeta = new Button("Lõpeta mäng");
+        rida3.getChildren().addAll(panus,panuseSisestus,uusM2ng,lopeta);
         juur.getChildren().add(rida3);
 
         // Neljas plokk
@@ -171,12 +172,13 @@ public class BlackJack extends Application {
                     Double raha;
                     try {
                         raha = failiLugemine.loeFailist(kasutajanimiSisestus.getText());
+                        String kasutajanimi = kasutajanimiSisestus.getText();
                     } catch (Exception e) {
                         System.out.println(e);
                         raha = 20.0;
                     }
 
-                    mängur[0] = new Mängur(raha,kasutajanimiSilt.getText());
+                    mängur[0] = new Mängur(raha,kasutajanimiSisestus.getText());
                     //mängur[0].setRahakott(20);
                     kasutajanimi.setText(" " + kasutajanimiSisestus.getText() + " ");
                     kasutajanimiSisestus.clear();
@@ -190,6 +192,9 @@ public class BlackJack extends Application {
                     // Näita sektsioone
                     plokk2.setVisible(true);
                     rida3.setVisible(true);
+
+
+                    Double finalRaha = raha;
                 }
             }
         });
@@ -243,16 +248,22 @@ public class BlackJack extends Application {
                         panuseSisestus.setStyle("-fx-opacity: 1;");
 
                     }
-
                 }
                 catch (NumberFormatException | InterruptedException e) {
                     String tekst = "Sisestud panus ei olnud number. \nSisesta panus numbrina!";
                     panuseSisestus.clear();
                     lisaAken(tekst,peaLava,stseen1,200,100);
                 }
-             }
+
+            }
         });
 
+        lopeta.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                peaLava.close();
+            }
+        });
 
     }
 
