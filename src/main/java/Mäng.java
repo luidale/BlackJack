@@ -73,7 +73,7 @@ public class Mäng {
 
     public static void kaartideJagamine(Käsi diiler, Käsi mängija, Pakk pakk) throws InterruptedException {
         // 1 kaart
-        mängija.lisaKaart(pakk,true);
+        mängija.lisaKaart(pakk, true);
         //kuvaLaud(diiler, mängija, "Kaartide jagamine");
         //TimeUnit.SECONDS.sleep(1);
         // 2 kaarti
@@ -115,6 +115,8 @@ public class Mäng {
         panuseSisestus.setDisable(false);
         panuseSisestus.setStyle("");
         panuseSisestus.clear();
+        for(Kaart kaart: diiler.getKaardid())
+            kaart.isPööratud();
         FailiLugemine lugemine = new FailiLugemine();
         if ( mangija.summa() > 21){
             info.setText("Diiler võitis! \n\tMängija läks lõhki " + mangija.summa() + " punktiga!");
@@ -151,7 +153,6 @@ public class Mäng {
                 }
             });
         }
-
         // Kontroll, et kui raha otsas siis lõetab mängu ära.
 
         

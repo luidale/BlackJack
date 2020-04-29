@@ -12,6 +12,7 @@ import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -122,10 +123,11 @@ public class BlackJack extends Application {
 
         // viies plokk
 
-        FlowPane m2nguplokk = new FlowPane();
-        m2nguplokk.setOrientation(Orientation.VERTICAL);
+        VBox m2nguplokk = new VBox();
+        //m2nguplokk.setOrientation(Orientation.VERTICAL);
         //m2nguplokk.setAlignment(Pos.TOP_LEFT);
-        m2nguplokk.setVgap(20);
+        //m2nguplokk.setVgap(20);
+        m2nguplokk.setSpacing(20);
         m2nguplokk.setVisible(false);
 
         Label diiler = new Label(" Diiler: ");
@@ -147,6 +149,7 @@ public class BlackJack extends Application {
 
         m2nguplokk.getChildren().addAll(diiler, diileriKaardid, mangija,mangijaKaardid,nupud);
         rida4.getChildren().add(m2nguplokk);
+
 
         // Kuues plokk
 
@@ -172,7 +175,6 @@ public class BlackJack extends Application {
                     Double raha;
                     try {
                         raha = failiLugemine.loeFailist(kasutajanimiSisestus.getText());
-                        String kasutajanimi = kasutajanimiSisestus.getText();
                     } catch (Exception e) {
                         System.out.println(e);
                         raha = 20.0;
@@ -254,6 +256,7 @@ public class BlackJack extends Application {
                     panuseSisestus.clear();
                     lisaAken(tekst,peaLava,stseen1,200,100);
                 }
+
 
             }
         });
