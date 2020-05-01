@@ -6,27 +6,69 @@ Hannes Luidalepp ja Joonas Anton Jürgenstein
 Projekt seisneb kaardimängu BlackJack lihtsustatud versioonis.
 Tegemist on ühe populaarseima kasiino kaardimänguga, kus saab teha panuseid mängitakse diileri (maja) vastu.
 Mängu eesmärk on koguda võimalikult suur punktide arv, mis ei tohi ületada 21 punkti. Samal ajal peab olema ka suurem diileri punkti summast.
-Diilet võtab juurde kui summa on väiksem kui 17.
+Diiler võtab juurde kui summa on väiksem kui 17.
 Kaartide väärtused on :
 Äss - 1 või 11
 Piltkaart - 10
 Numbrikaart - vastavalt numbrile (nt. 2 - 2 punkti)
 BlackJacki kõige tavalisemad reeglid leiab siit: https://www.jokker.ee/artikkel/blackjack
 Lihtsustuse huvides on ära jäetud ka võimalus käe poolitamiseks või duubeldamiseks.
-Mängijal on alguses 20 raha.
+
+Mängualustamiseks tuleb sisestada oma nimi. Kui selline mängija on varem juba seda mängu mänginud, siis leitakse andmebaasist (fail mängijad.txt) tema raha hulk.
+Juhul kui sellist mängijat andmebaasis ei ole luuakse uus mängija ja talle antakse 20 raha.
+
+Järgnevalt saab mängija teha panuse ja alustada blackjacki.
+
+Mängu saab lõpetada ning siis saab sisestada uue kasutaja nime ja sellega jätkata.
+
+Juhul kui kasutajal saab raha otsa siis edasi mängida ei saa soovitatakse võtta või luua uus kasutaja.
 
 *iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;
+Kaart
+	Kaardi eesmärk on esindada ühte mängu kaarti.
+	Tähtsaimad meetodid:
+		getSuurus() - tagastab kaardi suuruse (Äss, Kuningas, 1 jne.)
+		getVäärtus() - tagastab massiivi kaardi väärtustega 
+		avaKaart() - algselt on kaardipakis kõik kaardid tagurpidi. Enamus kaarte jagatakse siiski avatuna ning 
+					jagamise protsessi kasutatakse seda meetodit, et kaart ümber pöörata.
+					Diilerile jagatakse alguses ka üks kaart tagurpidi. Hiljem kasutatakse seda meetodit, selle kaardi ümber pööramiseks.		
+		toString() - tagastab kaardi info sõnena kujul Mast-Suurus (Nt. Po-7) ja kasutakse kaardi kuvamiseks.
+Pakk
+	Pakk esindab kaardipakki, mis koosneb kaartidest.
+	Pakis hoitakse kaarte (tunnus ArrayList<Kaart> kaardid) enne välja jagamist.
+	Tähtsaimad meetodid:
+		getKaardid() - tagastab kaardid, kasutakse testimisel, et kas kaardipakk on korralikult, loodud, segatud
+						ja kas kaart on kaardi jagamisel pakkist eemaldatud.
+		sega() - ajab pakis olevad kaardid juhuslikku järjekoda. Oluline tegevus peale kaardipaki loomist (kaardid on alguses järjekorras).
+		jagaKaart() - kasutatakse kaardi jagamisel. Eemalldab pakist esimese kaardi ja tagastab selle.
+		eemaldaKaart() - eemaldab kaardi antud positsioonilt. Kasutatakse pakki segamisel (sega()) ja kaardi jagamisel (jagaKaart()).
+Käsi
+    Käsi esindab neid kaarte, mis mängijal/diileril parasjagu käes/laual on.
+    Tähtsaimad meetodid:
+       getKaardid() - tagastab kaardid, mis mängijal käes on.
+       lisaKaart() - lisab mängijale kaardi, samuti on seal boolean tüüpi parameeter, mis määrab ära,
+                     kas kaart on nähtav või mitte.
+       summa() - tagastab kaartide summa vastavalt iga kaardi väärtusele, aga kuna "Ä" on kaks väärtust, siis
+                 tagastab 1 vastavalt siis, kui ülejäänud kaartide summa on suurem 11 ja tagastab Ä väärtuseks
+                 11, kui ülejäänud kaartide summa on väiksem 11-st.
+	
+Mäng
+	Esindab reaalset blackjacki mängu (mäng on üks panus ja kaartide jagamine).
+	Tähtsaimad meetodid:
+		alusta() - võtakse rahakottist panus ja jagatakse kaardid, kontrollitakse ega mängija kohe ei võitnud ja tehakse nähtavaks nupud mängija vooru jaoks (kas võtta või mitte võtta kaarte)
+		diileriVoor() - viib läbi mängu osa, kus diiler saab kaarte juurde võtta.
+		mänguLõpp() - kontrollitakse, et kes võitis ning kas lõpus on kasutajal raha alles. 
+
+
+Mängur
+	Kujutab blackJacki mängijat. Haldab rahakotti, millest tehakse panuseid ja kuhu pannakse võidud.
+	Tähtsamad meetodid:
+		muudaRahakott() - eemaldab või paneb raha juurde, kasutatakse panuste võtmiseks ja võitude lisamiseks.
+		getRahakott() - kasutatakse rahakoti seisu teada saamiseks.
+
 BlackJack
-
-Mäng -
-
-Käsi -
-
-Mängur -
-
-Pakk -
-
-Kaart -
+	BlackJackis kutsutakse programm ellu ning genereeritakse pealava koos kõikide graafiliste elementidega.
+	Erinevate nuppude all on erinevad 
 
 Faililugemine - meetod loeFailist, mis loeb failist välja kasjutaja andmed või kui kasutajat ei ole loob uue kasutaja.
                 Meetod uuendaAndmed uuendab kasutaja andmeid failis vastvalt tema panusele ning mängu tulemusele.
@@ -45,3 +87,5 @@ Faililugemine - meetod loeFailist, mis loeb failist välja kasjutaja andmed või
 
 
 *selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
+
+Kaardi, Kaardipakki, Käsi ja Mängur tulid suht muutumatult rühmatööst1 ja nende toimimist eraldi polnud vaja kontrollida. Muusosas sai mängu jooksutatud kõikvõimalikes erinevates kombinatsioonides ning veendutud, et asi töötab.
