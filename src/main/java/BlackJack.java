@@ -258,13 +258,16 @@ public class BlackJack extends Application {
                         //peida nupp ise
                         Button source = (Button) mouseEvent.getSource();
                         source.setVisible(false);
+
+                        panuseSisestus.setDisable(true);
+                        panuseSisestus.setStyle("-fx-opacity: 1;");
+                        lopeta.setVisible(false);
+
                         // Alustab mängu
                         mäng[0] = new Mäng(diileriKaardid, mangijaKaardid);
 
                         mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus,rida1,lopeta);
-                        panuseSisestus.setDisable(true);
-                        panuseSisestus.setStyle("-fx-opacity: 1;");
-                        lopeta.setVisible(false);
+
 
                     }
                 }

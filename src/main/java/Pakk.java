@@ -20,6 +20,37 @@ public class Pakk {
 
     }
 
+    public Pakk(String tüüp) {
+        // KOnstruktor millega saab tekitada testimiseks sobiliku seisuga kaardipakki
+        kaardid = new ArrayList<>();
+        String[] mastid = {" ♣", " ♦", " ♠", " ♥"};
+
+        if (tüüp.equals("blackjack")) {
+            String[] suurused = {"K", "Ä", "2", "3", "4", "5", "6", "7", "8", "9", "10", "S", "E"};
+            int[][] väärtused = {{10}, {1, 11}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {10}, {10}};
+            // Tekita kaardid
+            for (String s : mastid) {
+                for (int j = 0; j < suurused.length; j++) {
+                    //System.out.println(i + "-" + j);
+                    this.kaardid.add(new Kaart(s, suurused[j], väärtused[j]));
+                }
+            }
+        } else {
+            String[] suurused = {"2","3","4","5","6","7","8","9","10","S","E","K","Ä"};
+            int[][] väärtused = {{2},{3},{4},{5},{6},{7},{8},{9},{10},{10},{10},{10},{1,11}};
+            // Tekita kaardid
+            for (String s : mastid) {
+                for (int j = 0; j < suurused.length; j++) {
+                    //System.out.println(i + "-" + j);
+                    this.kaardid.add(new Kaart(s, suurused[j], väärtused[j]));
+                }
+            }
+        }
+
+
+    }
+
+
     public ArrayList<Kaart> getKaardid() {
         return kaardid;
     }

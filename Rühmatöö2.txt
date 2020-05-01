@@ -92,8 +92,10 @@ Hannes - Esimese rühmatöö käsureaprogramm oli struktuurilt lihtne ja selge n
 
 
 *hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
+Mäng tuli töötav välja ja kõik probleemid või vead mida leidsime said lahendatud.
 
 
 *selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
 
 Kaardi, Kaardipakki, Käsi ja Mängur tulid suht muutumatult rühmatööst1 ja nende toimimist eraldi polnud vaja kontrollida. Muusosas sai mängu jooksutatud kõikvõimalikes erinevates kombinatsioonides ning veendutud, et asi töötab.
+Kaardipakile sai lisatud veel üks konstruktor, millega saab tekitada testimiseks vajalikke kaartide järjestusi. Reaalselt sai tehtud ainult variant luua kaardid, nii et mängija saab alguses blackjacki ja diileril ei ole blackjacki. Sellega sai testitud seda erijuhtu.

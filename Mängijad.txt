@@ -1,6 +1,7 @@
-Hannes;1354.0
+Hannes;7564.0
 Joonas;103.0
 Anna Mari;0.0
 
 Markus;32.3
 peeter toomas;21.0
+Hannes2;2822.0

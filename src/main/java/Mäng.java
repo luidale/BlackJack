@@ -21,6 +21,7 @@ public class Mäng {
         diiler = new Käsi(diileriKaardiVäli);
         mangija = new Käsi(mangijaKaardiVäli);
         kaardipakk = new Pakk();
+        //kaardipakk = new Pakk("blackjack");
         kaardipakk.sega();
     }
 
@@ -34,7 +35,13 @@ public class Mäng {
         // Kontroll kas mängijal on bläckjack ja diileril ei saa olla BlackJack
         if (mangija.summa() == 21) {
             if (Arrays.asList("Ä", "K", "E", "S", "10").indexOf(diiler.getKaardid().get(1).getSuurus()) == -1) {
-                info.setText("Mängija võitis BlackJack-iga, diileril ei olnud BlackJacki!");
+                info.setText("Mängija võitis BlackJack-iga, \ndiileril ei olnud BlackJacki!");
+                info.setVisible(true);
+                uusM2ng.setVisible(true);
+                panuseSisestus.setDisable(false);
+                panuseSisestus.setStyle("");
+                panuseSisestus.clear();
+                lopeta.setVisible(true);
                 voit(panus, mangur, 2.5, info,summa);
                 return;
             }
