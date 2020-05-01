@@ -17,7 +17,7 @@ public class FailiLugemine {
             try(BufferedReader lugeja = new BufferedReader(new InputStreamReader(new FileInputStream(fail)))){
                 String rida = lugeja.readLine();
                 while(rida != null){
-                    String[] tykid = rida.split(" ");
+                    String[] tykid = rida.split(";");
                     if(tykid[0].equals(kasutajanimi)){
                         sisaldab_Kasutajat = true;
                         summa = Double.parseDouble(tykid[1]);
@@ -29,7 +29,7 @@ public class FailiLugemine {
         }
         if(!sisaldab_Kasutajat){
             try(PrintWriter kirjutaja = new PrintWriter(new BufferedWriter(new FileWriter(fail,true)))){
-                kirjutaja.println(kasutajanimi + " " + summa);
+                kirjutaja.println(kasutajanimi + ";" + summa);
             }
         }
         return summa;
@@ -42,12 +42,13 @@ public class FailiLugemine {
             String rida;
 
             while((rida = fail.readLine()) != null){
-                if(rida.contains(kasutajanimi)){
-                    String uusrida = kasutajanimi + " " + summa;
+                String[] osad = rida.split(";");
+                if(osad[0].equals(kasutajanimi)){
+                    String uusrida = kasutajanimi + ";" + summa;
                     sisend.append(uusrida);
                     sisend.append("\n");
                 }
-                if (!rida.contains(kasutajanimi)){
+                if (!osad[0].equals(kasutajanimi)){
                     sisend.append(rida);
                     sisend.append("\n");
                 }

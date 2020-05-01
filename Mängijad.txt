@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-Hannes 1404.0
-Joonas 63.5
-=======
-Hannes 1404.0
-Joonas 98.0
->>>>>>> f146fccf673b7dd823f5cb5898ca5f0b60ccd775
-Markus 17.0
-Hannes 1404.0
-Peeter 0
+Hannes;1354.0
+Joonas;103.0
+Anna Mari;0.0
+
+Markus;32.3
+peeter toomas;18.0

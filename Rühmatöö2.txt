@@ -75,9 +75,12 @@ Faililugemine - meetod loeFailist, mis loeb failist välja kasjutaja andmed või
 
 
 *projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);
+Hannes koostas algse skeemi, kuidas programm välja võiks näha.
+Joonas koostas stseeni graafi.
 
 
 *iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+
 
 
 *tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
