@@ -80,10 +80,14 @@ Joonas koostas stseeni graafi.
 
 
 *iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
-
+ Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, Mängur.
+ Joonas koostas klassid Käsi, FailiLugemine.
+ Klassid Mäng ja BlackJack teostati koos.
 
 
 *tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+Joonas - nuppude ja siltide paigutamine õigetesse kohtadesse, algselt oli raskusi ka failis ridade ümberkirjutamisega ehk kui mängija on mängu lõpetanud ehk kuidas tema uut summat failis asendada.
+
 
 
 *hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);

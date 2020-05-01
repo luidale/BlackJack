@@ -3,4 +3,4 @@ Joonas;103.0
 Anna Mari;0.0
 
 Markus;32.3
-peeter toomas;18.0
+peeter toomas;21.0
