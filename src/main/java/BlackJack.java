@@ -20,6 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
+import java.util.concurrent.TimeUnit;
 
 
 public class BlackJack extends Application {
@@ -191,6 +192,7 @@ public class BlackJack extends Application {
                     //leiaKasutaja.setDisable(true);
                     leiaKasutaja.setOnMouseClicked(e -> leiaKasutaja.setDisable(false));
 
+
                     // Näita sektsioone
                     plokk2.setVisible(true);
                     rida3.setVisible(true);
@@ -245,9 +247,10 @@ public class BlackJack extends Application {
                         mäng[0] = new Mäng(diileriKaardid, mangijaKaardid);
 
                         //System.out.println("AAA");
-                        mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus);
+                        mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus,lopeta);
                         panuseSisestus.setDisable(true);
                         panuseSisestus.setStyle("-fx-opacity: 1;");
+                        lopeta.setVisible(false);
 
                     }
                 }

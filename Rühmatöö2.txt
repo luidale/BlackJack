@@ -1,0 +1,47 @@
+*Autorite nimed
+Hannes Luidalepp ja Joonas Anton Jürgenstein
+
+
+*projekti põhjalik kirjeldus, kus on kirjas programmi eesmärk ja selgitus programmi üldisest tööst, vajadusel lühike kasutusjuhis;
+Projekt seisneb kaardimängu BlackJack lihtsustatud versioonis.
+Tegemist on ühe populaarseima kasiino kaardimänguga, kus saab teha panuseid mängitakse diileri (maja) vastu.
+Mängu eesmärk on koguda võimalikult suur punktide arv, mis ei tohi ületada 21 punkti. Samal ajal peab olema ka suurem diileri punkti summast.
+Diilet võtab juurde kui summa on väiksem kui 17.
+Kaartide väärtused on :
+Äss - 1 või 11
+Piltkaart - 10
+Numbrikaart - vastavalt numbrile (nt. 2 - 2 punkti)
+BlackJacki kõige tavalisemad reeglid leiab siit: https://www.jokker.ee/artikkel/blackjack
+Lihtsustuse huvides on ära jäetud ka võimalus käe poolitamiseks või duubeldamiseks.
+Mängijal on alguses 20 raha.
+
+*iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;
+BlackJack
+
+Mäng -
+
+Käsi -
+
+Mängur -
+
+Pakk -
+
+Kaart -
+
+Faililugemine - meetod loeFailist, mis loeb failist välja kasjutaja andmed või kui kasutajat ei ole loob uue kasutaja.
+                Meetod uuendaAndmed uuendab kasutaja andmeid failis vastvalt tema panusele ning mängu tulemusele.
+
+
+*projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);
+
+
+*iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+
+
+*tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+
+
+*hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
+
+
+*selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.

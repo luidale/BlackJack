@@ -1,7 +1,9 @@
 import javafx.scene.control.Label;
+import javafx.scene.effect.Effect;
 import javafx.scene.layout.HBox;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +37,6 @@ public class Käsi {
 
         Label kaardiKuva = new Label(" " + uuskaart + " ");
         kaardiKuva.setStyle(style);
-
 
         kaardiLaud.getChildren().add(kaardiKuva);
     }

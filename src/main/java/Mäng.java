@@ -23,7 +23,7 @@ public class Mäng {
         kaardipakk.sega();
     }
 
-    public void alusta(Mängur mangur, Double panus, Label summa, Button v6ta, Button eiV6ta, HBox nupud, Label info,Button uusM2ng,TextField panuseSisestus) throws InterruptedException {
+    public void alusta(Mängur mangur, Double panus, Label summa, Button v6ta, Button eiV6ta, HBox nupud, Label info,Button uusM2ng,TextField panuseSisestus,Button lopeta) throws InterruptedException {
         // Eemalda panus rahakotist
         //System.out.println("BBB");
         mangur.muudaRahakott(-panus);
@@ -51,7 +51,7 @@ public class Mäng {
                 if (mangija.summa() >= 21) {
                     //kuvaLaud(diiler, mängija,  "Mängija voor:");
                     nupud.setVisible(false);
-                    mänguLõpp(mangija, diiler, panus, mangur, info, uusM2ng,panuseSisestus,summa);
+                    mänguLõpp(mangija, diiler, panus, mangur, info, uusM2ng,panuseSisestus,summa,lopeta);
                 }
             }
         });
@@ -61,10 +61,11 @@ public class Mäng {
             public void handle(MouseEvent mouseEvent) {
                 nupud.setVisible(false);
                 try {
-                    diileriVoor(mangija, diiler, kaardipakk, panus, mangur, info,uusM2ng,panuseSisestus,summa);
+                    diileriVoor(mangija, diiler, kaardipakk, panus, mangur, info,uusM2ng,panuseSisestus,summa,lopeta);
                 } catch (InterruptedException e) {
                     System.out.println(e);
                 }
+                lopeta.setVisible(true);
 
             }
         });
@@ -88,7 +89,7 @@ public class Mäng {
         diiler.lisaKaart(pakk,true);
     }
 
-    public static void diileriVoor(Käsi mängija, Käsi diiler,  Pakk pakk, Double panus, Mängur mangur,Label info,Button uusM2ng,TextField panuseSisestus, Label summa) throws InterruptedException {
+    public static void diileriVoor(Käsi mängija, Käsi diiler,  Pakk pakk, Double panus, Mängur mangur,Label info,Button uusM2ng,TextField panuseSisestus, Label summa,Button lopeta) throws InterruptedException {
 
         // Pööra diileri esimene kaart ümber
         diiler.getKaardid().get(0).avaKaart();
@@ -103,21 +104,20 @@ public class Mäng {
             //TimeUnit.SECONDS.sleep(2);
         }
 
-        mänguLõpp(mängija, diiler, panus, mangur,info, uusM2ng, panuseSisestus, summa);
+        mänguLõpp(mängija, diiler, panus, mangur,info, uusM2ng, panuseSisestus, summa,lopeta);
         //kuvaLaud(diiler, mängija,  "Diileri voor:");
         return;
 
     }
 
-    public static void mänguLõpp(Käsi mangija, Käsi diiler, Double panus, Mängur mangur,Label info,Button uusM2ng, TextField panuseSisestus, Label summa) {
+    public static void mänguLõpp(Käsi mangija, Käsi diiler, Double panus, Mängur mangur,Label info,Button uusM2ng, TextField panuseSisestus, Label summa,Button lopeta) {
         info.setVisible(true);
         uusM2ng.setVisible(true);
         panuseSisestus.setDisable(false);
         panuseSisestus.setStyle("");
         panuseSisestus.clear();
-        for(Kaart kaart: diiler.getKaardid())
-            kaart.isPööratud();
         FailiLugemine lugemine = new FailiLugemine();
+        lopeta.setVisible(true);
         if ( mangija.summa() > 21){
             info.setText("Diiler võitis! \n\tMängija läks lõhki " + mangija.summa() + " punktiga!");
             try {
