@@ -1,0 +1,97 @@
+*Autorite nimed;
+Hannes Luidalepp ja Joonas Jürgenstein
+
+*Projekti põhjalik kirjeldus, kus on kirjas programmi eesmärk ja selgitus programmi üldisest tööst, vajadusel lühike kasutusjuhis;
+Projekt seisneb kaardimängu BlackJack lihtsustatud versioonis.
+Tegemist on ühe populaarseima kasiino kaardimänguga, kus saab teha panuseid mängitakse diileri (maja) vastu.
+Mängu eesmärk on koguda võimalikult suur punktide arv, mis ei tohi ületada 21 punkti. Samal ajal peab olema ka suurem diileri punkti summast.
+Diilet võtab juurde kui summa on väiksem kui 17.
+Kaartide väärtused on :
+Äss - 1 või 11
+Piltkaart - 10
+Numbrikaart - vastavalt numbrile (nt. 2 - 2 punkti)
+BlackJacki kõige tavalisemad reeglid leiab siit: https://www.jokker.ee/artikkel/blackjack
+Lihtsustuse huvides on ära jäetud ka võimalus käe poolitamiseks või duubeldamiseks.
+
+Mängualustamiseks tuleb sisestada oma nimi. Kui selline mängija on varem juba seda mängu mänginud, siis leitakse andmebaasist (fail mängijad.txt) tema raha hulk.
+Juhul kui sellist mängijat andmebaasis ei ole luuakse uus mängija ja talle antakse 20 raha.
+
+Järgnevalt saab mängija teha panuse ja alustada blackjacki.
+
+Mängu saab lõpetada ning siis saab sisestada uue kasutaja nime ja sellega jätkata.
+
+Juhul kui kasutajal saab raha otsa siis edasi mängida ei saa soovitatakse võtta või luua uus kasutaja.
+
+*Iga klassi kohta eraldi selle eesmärk ja olulisemad meetodid;
+Klassid:
+Kaart
+	Kaardi eesmärk on esindada ühte mängu kaarti.
+	Tähtsaimad meetodid:
+		getSuurus() - tagastab kaardi suuruse (Äss, Kuningas, 1 jne.)
+		getVäärtus() - tagastab massiivi kaardi väärtustega 
+		avaKaart() - algselt on kaardipakis kõik kaardid tagurpidi. Enamus kaarte jagatakse siiski avatuna ning 
+					jagamise protsessi kasutatakse seda meetodit, et kaart ümber pöörata.
+					Diilerile jagatakse alguses ka üks kaart tagurpidi. Hiljem kasutatakse seda meetodit, selle kaardi ümber pööramiseks.		
+		toString() - tagastab kaardi info sõnena kujul Mast-Suurus (Nt. Po-7) ja kasutakse kaardi kuvamiseks.
+Pakk
+	Pakk esindab kaardipakki, mis koosneb kaartidest.
+	Pakis hoitakse kaarte (tunnus ArrayList<Kaart> kaardid) enne välja jagamist.
+	Tähtsaimad meetodid:
+		getKaardid() - tagastab kaardid, kasutakse testimisel, et kas kaardipakk on korralikult, loodud, segatud
+						ja kas kaart on kaardi jagamisel pakkist eemaldatud.
+		sega() - ajab pakis olevad kaardid juhuslikku järjekoda. Oluline tegevus peale kaardipaki loomist (kaardid on alguses järjekorras).
+		jagaKaart() - kasutatakse kaardi jagamisel. Eemalldab pakist esimese kaardi ja tagastab selle.
+		eemaldaKaart() - eemaldab kaardi antud positsioonilt. Kasutatakse pakki segamisel (sega()) ja kaardi jagamisel (jagaKaart()).
+Käsi
+    Käsi esindab neid kaarte, mis mängijal/diileril parasjagu käes/laual on.
+    Tähtsaimad meetodid:
+       getKaardid() - tagastab kaardid, mis mängijal käes on.
+       lisaKaart() - lisab mängijale kaardi, samuti on seal boolean tüüpi parameeter, mis määrab ära,
+                     kas kaart on nähtav või mitte.
+       summa() - tagastab kaartide summa vastavalt iga kaardi väärtusele, aga kuna "Ä" on kaks väärtust, siis
+                 tagastab 1 vastavalt siis, kui ülejäänud kaartide summa on suurem 11 ja tagastab Ä väärtuseks
+                 11, kui ülejäänud kaartide summa on väiksem 11-st.
+	
+Mäng
+	Esindab reaalset blackjacki mängu (mäng on üks panus ja kaartide jagamine).
+	Tähtsaimad meetodid:
+		alusta() - võtakse rahakottist panus ja jagatakse kaardid, kontrollitakse ega mängija kohe ei võitnud ja tehakse nähtavaks nupud mängija vooru jaoks (kas võtta või mitte võtta kaarte)
+		diileriVoor() - viib läbi mängu osa, kus diiler saab kaarte juurde võtta.
+		mänguLõpp() - kontrollitakse, et kes võitis ning kas lõpus on kasutajal raha alles. 
+
+
+Mängur
+	Kujutab blackJacki mängijat. Haldab rahakotti, millest tehakse panuseid ja kuhu pannakse võidud.
+	Tähtsamad meetodid:
+		muudaRahakott() - eemaldab või paneb raha juurde, kasutatakse panuste võtmiseks ja võitude lisamiseks.
+		getRahakott() - kasutatakse rahakoti seisu teada saamiseks.
+
+BlackJack
+	BlackJackis kutsutakse programm ellu ning genereeritakse pealava koos kõikide graafiliste elementidega.
+	Erinevate nuppude all on erinevad 
+
+*Projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);
+    Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, BlackJack (see on praegu kasutuseta, kuid ajaloo huvides säilitatud, selle alusel tehti ning arendati edasi klassid Mäng ja Peaklass), Mängur.
+    Joonas koostas klassid Käsi.
+    Klassid Mäng ja Peaklass teostati koos.
+
+*Iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
+    Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, BlackJack (see on praegu kasutuseta, kuid ajaloo huvides säilitatud, selle alusel tehti ning arendati edasi klassid Mäng ja Peaklass), Mängur.
+    Joonas koostas klassid Käsi.
+    Klassid Mäng ja Peaklass teostati koos.
+
+*Tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
+    Joonas - programmeerimise poole pealt tundsin puudust ehk veidi erinevate tsüklite koostamise oskusest,
+    kuna Pythonis on see veidi lihtsam, aga Javas pisut nüansirohkem ja keerulisem. Samuti kuna ma pole varem
+    BlackJacki mänginud, siis arusaamine, kuidas mäng toimib (nt miks "Ä" on kaks väärtust) võttis veidi aega.
+	Hannes - Mina tundsin puudust sellest, et kohati on objekt orienteeritult raske mõelda, kuna varem olen ainult mitte-objektorienteeritult asju teinud. Klassid Kaart, Pakk, Käsi ja Mängur on lihtne mõista. Pean silmas, et klass Mäng näeb liiga mitte-objekt orienteeritud välja. Mul on tunne, et selle klassi sisu (ehk mängu enda loogika protsess) peaks ehk rohkem erinevatest klassidest koosnema. Või siis rohkem erinevatesse meetoditesse pandud olema. Vähemalt korduvad tegevused on proovitud mõistlikuse piires meetoditesse panna.
+
+*Hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
+	Mäng BlackJack on oma kõikide reeglitega üsna nüansirikkas ning kõikide nende elluviimisega me vaeva ei näinud. Eesmärk oli saada tööle mängu funktsionaalsus, kus jagatakse kaardid, mängijalt küsitakse kas tahab kaarte juurde ning selgitatakse võitja (päris reeglitele vastavalt). Ja see tundub, et tuli välja hästi.
+
+*Selgitus ja/või näited, kuidas programmi osi eraldi ja programmi tervikuna testisite ehk kuidas veendusite, et programm töötab korrektselt.
+    Näiteks klassis test kontrollisime, kas meetodid sega() ja summa() töötab korrektselt, ehk klassi Pakk meetod sega()
+    pidi kaardipakis kaardid suvalisse järjekorda segama ning klassi Käsi meetod summa() pidi kaartide väärtused kokku
+    liitma, aga pidi ka arvestama seda, et "Ä" on kaks väärtust ehk pidime kontrollima, et summa() tagastaks õige väärtuse
+    ka "Ä" korral.
+	Klass mängu funktsioneerimist sai testitud reaalselt mängides ning jälgitud, et vigu oleks.
