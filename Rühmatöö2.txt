@@ -68,26 +68,27 @@ Mängur
 
 BlackJack
 	BlackJackis kutsutakse programm ellu ning genereeritakse pealava koos kõikide graafiliste elementidega.
-	Erinevate nuppude all on erinevad 
+	Erinevate nuppude all algatatakse erinevaid tegevusi, mis ei ole otseselt meetoditeks vormistatud ja kutsutakse ellu ka teiste klasside meetodeid.
 
-Faililugemine - meetod loeFailist, mis loeb failist välja kasjutaja andmed või kui kasutajat ei ole loob uue kasutaja.
-                Meetod uuendaAndmed uuendab kasutaja andmeid failis vastvalt tema panusele ning mängu tulemusele.
+Faililugemine - meetod loeFailist() loeb failist välja kasjutaja andmed või kui kasutajat ei ole loob uue kasutaja.
+                Meetod uuendaAndmed() uuendab kasutaja andmeid failis vastvalt tema panusele ning mängu tulemusele.
 
 
 *projekti tegemise protsessi kirjeldus (erinevad etapid ja rühmaliikmete osalemine neis);
+Aluseks võtsime esimese rühmatöö.
 Hannes koostas algse skeemi, kuidas programm välja võiks näha.
 Joonas koostas stseeni graafi.
-
+Hannes tegi valmis enamus graafilisi elemente ja edasi täiendati ning pandi need tööle koos.
 
 *iga rühmaliikme panus (sh tehtud klassid/meetodid) ja ajakulu (orienteeruvalt);
  Hannes mõtles välja projekti ja koostas klassid Kaart, Pakk, Mängur.
  Joonas koostas klassid Käsi, FailiLugemine.
  Klassid Mäng ja BlackJack teostati koos.
-
+ Hannesel kulus ehk 6-10 tundi.
 
 *tegemise mured (nt millistest teadmistest/oskustest tundsite projekti tegemisel puudust);
 Joonas - nuppude ja siltide paigutamine õigetesse kohtadesse, algselt oli raskusi ka failis ridade ümberkirjutamisega ehk kui mängija on mängu lõpetanud ehk kuidas tema uut summat failis asendada.
-
+Hannes - Esimese rühmatöö käsureaprogramm oli struktuurilt lihtne ja selge ning minu arvates suht lihtsalt loetav. Nüüd graafilises see ei ole enam nii lihtsalt loetav ja struur on ka segasem. Lõplikus vormis on see juba suht ok aga tunnen, et võiks veel parem olla aga ei oska. Mind häirib just see, et praeguses lahenduses on erinevaid graafilisi elemente on vaja meetoditel koguaeg sisendiks panna ja need sisendite nimekirjad on kole pikad. Mõnes mitmes kohas saaks koodi kordust küll vähendada aga siis ma kardan läheksid need sisendite nimekirjad veel pikemaks.
 
 
 *hinnang oma töö lõpptulemusele (millega saite hästi hakkama ja mis vajab arendamist);
