@@ -199,6 +199,7 @@ public class BlackJack extends Application {
                     // Kui leitud mängijal ei ole raha antakse hoiatus
                     // Kontroll, et kui raha otsas siis lõetab mängu ära.
                     if(mängur[0].getRahakott() == 0.0) {
+                        lopeta.setVisible(false);
                         info.setVisible(true);
                         info.setText(info.getText() + "\nAntud kasutajal ei ole enam raja ja mängida ei saa!");
                         info.setText(info.getText() + "\n\nLoo/otsi uus kasutaja!");
@@ -260,9 +261,10 @@ public class BlackJack extends Application {
                         // Alustab mängu
                         mäng[0] = new Mäng(diileriKaardid, mangijaKaardid);
 
-                        mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus,rida1);
+                        mäng[0].alusta(mängur[0],Double.parseDouble(panuseSisestus.getText()),summa, v6ta,eiV6ta,nupud,info,uusM2ng,panuseSisestus,rida1,lopeta);
                         panuseSisestus.setDisable(true);
                         panuseSisestus.setStyle("-fx-opacity: 1;");
+                        lopeta.setVisible(false);
 
                     }
                 }
@@ -285,7 +287,7 @@ public class BlackJack extends Application {
                 for (Node element: rida1.getChildren()){
                     element.setDisable(false);
                 }
-
+                lopeta.setVisible(false);
                 uusM2ng.setDisable(true);
                 panuseSisestus.setDisable(true);
             }

@@ -1,10 +1,10 @@
 <<<<<<< HEAD
-Hannes 1384.0
+Hannes 1404.0
 Joonas 63.5
 =======
-Hannes 1454.0
+Hannes 1404.0
 Joonas 98.0
 >>>>>>> f146fccf673b7dd823f5cb5898ca5f0b60ccd775
 Markus 17.0
-Hannes 1384.0
+Hannes 1404.0
 Peeter 0
