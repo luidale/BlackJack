@@ -5,26 +5,26 @@ An unprecedented GUI sequel to the [GAME](https://github.com/luidale/commandLine
 New stunning  continuation of the epic adventure begins in excellent graphical user interface (GUI) which will set a standard for the coming decade. 
 
 Inline-style: 
-![alt text](https://github.com/luidale/commandLineBlackJack/figures/fig1.JPG "Pilt 1")
+![alt text](https://github.com/luidale/commandLineBlackJack/tree/master/figures/fig1.JPG "Pilt 1")
 
 Inline-style: 
-![alt text](https://github.com/luidale/commandLineBlackJack/figures/fig2.JPG "Pilt 2")
+![alt text](https://github.com/luidale/commandLineBlackJack/tree/master/figures/fig2.JPG "Pilt 2")
 
 Inline-style: 
-![alt text](https://github.com/luidale/commandLineBlackJack/figures/fig3.PNG "Pilt 3")
+![alt text](https://github.com/luidale/commandLineBlackJack/tree/master/figures/fig3.PNG "Pilt 3")
 
 
-###Reviews:
-####Väino:
+### Reviews:
+#### Väino:
 "Combuter game equivalent of Santa Barbara!"
 
-###Ülo:
+### Ülo:
 "Essential part of everyone's free time!"
 
-###Ants:
+### Ants:
 "A magnificently orignal blend of entertainment!"
 
-###Oskar:
+### Oskar:
 "As clese as you'll get to a Hollywood blockbuster in game form!"
 
 
