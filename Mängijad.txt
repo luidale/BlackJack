@@ -5,3 +5,5 @@ Anna Mari;0.0
 Markus;32.3
 peeter toomas;21.0
 Hannes2;2822.0
+Mait;0.0
+Ants;10.0
