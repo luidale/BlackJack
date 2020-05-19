@@ -8,10 +8,10 @@ Inline-style:
 ![alt text](https://github.com/luidale/BlackJack/raw/master/figures/fig1.JPG "Pilt 1")
 
 Inline-style: 
-![alt text](https://github.com/luidale/commandLineBlackJack/tree/master/figures/fig2.JPG "Pilt 2")
+![alt text](https://github.com/luidale/BlackJack/tree/master/figures/fig2.JPG "Pilt 2")
 
 Inline-style: 
-![alt text](https://github.com/luidale/commandLineBlackJack/tree/master/figures/fig3.PNG "Pilt 3")
+![alt text](https://github.com/luidale/BlackJack/tree/master/figures/fig3.PNG "Pilt 3")
 
 
 ### Reviews:
